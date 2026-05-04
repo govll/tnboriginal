@@ -1,10 +1,11 @@
-  *, *::before, *::after {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
   :root {
+    --netflix-red: #E50914;
     --gold: #C9A84C;
     --muted: #8a8a8a;
     --white: #ffffff;
@@ -19,39 +20,6 @@
     overflow: hidden;
   }
 
-  /* ── SCANLINES + STATIC OVERLAY ── */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
-      to bottom,
-      rgba(255,255,255,0.03),
-      rgba(255,255,255,0.03) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-    pointer-events: none;
-    z-index: 10;
-    animation: flicker 3s infinite;
-  }
-
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
-    opacity: 0.04;
-    mix-blend-mode: screen;
-    pointer-events: none;
-    z-index: 9;
-  }
-
-  @keyframes flicker {
-    0%, 100% { opacity: 0.08; }
-    50% { opacity: 0.12; }
-  }
-
   .wrap {
     height: 100vh;
     display: flex;
@@ -62,11 +30,13 @@
     position: relative;
   }
 
+  /* subtle background glow */
   .wrap::before {
     content: "";
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at center, rgba(201,168,76,0.12), transparent 60%);
+    pointer-events: none;
   }
 
   .content {
@@ -80,52 +50,12 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── GLITCH 404 ── */
   .code {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 140px;
+    font-size: 120px;
     letter-spacing: 6px;
     color: var(--gold);
-    position: relative;
     line-height: 1;
-    animation: glitchSkew 2.5s infinite;
-  }
-
-  .code::before,
-  .code::after {
-    content: "404";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .code::before {
-    color: #ff004c;
-    transform: translateX(-2px);
-    animation: glitchTop 2s infinite;
-  }
-
-  .code::after {
-    color: #00e5ff;
-    transform: translateX(2px);
-    animation: glitchBottom 1.8s infinite;
-  }
-
-  @keyframes glitchTop {
-    0%,100% { clip-path: inset(0 0 90% 0); }
-    50% { clip-path: inset(0 0 40% 0); }
-  }
-
-  @keyframes glitchBottom {
-    0%,100% { clip-path: inset(60% 0 0 0); }
-    50% { clip-path: inset(20% 0 0 0); }
-  }
-
-  @keyframes glitchSkew {
-    0%,100% { transform: skew(0deg); }
-    50% { transform: skew(1deg); }
   }
 
   .title {
