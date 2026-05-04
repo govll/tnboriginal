@@ -1,0 +1,253 @@
+/* ── THE NEW BUCKINGHAM — SHARED STYLES ── */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold:     #C9A84C;
+  --orange:   #E8671A;
+  --yellow:   #D4B800;
+  --green:    #5A8A3C;
+  --muted:    #8a8a8a;
+  --white:    #ffffff;
+  --dark:     #0a0a0a;
+  --card-bg:  #141414;
+  --border:   rgba(255,255,255,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10,10,10,0.97);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+
+/* ── LEGAL PAGE LAYOUT ── */
+.legal-page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 140px 60px 100px;
+}
+
+.legal-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.legal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.legal-updated {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-section {
+  margin-bottom: 48px;
+}
+
+.legal-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+
+.legal-section p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 14px;
+}
+
+.legal-section p:last-child { margin-bottom: 0; }
+
+.legal-section ul {
+  list-style: none;
+  margin: 14px 0;
+}
+
+.legal-section ul li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.legal-section ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.legal-section a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  transition: border-color 0.2s;
+}
+.legal-section a:hover { border-color: var(--gold); }
+
+.legal-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0;
+}
+
+.legal-highlight {
+  background: var(--card-bg);
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+}
+
+/* ── RAINBOW BAR ── */
+.rainbow-bar {
+  height: 4px;
+  background: linear-gradient(to right, #E8671A, #D4B800, #8bc34a, #5A8A3C, #6a7c3e);
+  width: 100%;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  padding: 60px;
+  border-top: 1px solid var(--border);
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  color: var(--gold);
+  letter-spacing: 3px;
+}
+
+.footer-text {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-links a {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  .legal-page { padding: 120px 24px 80px; }
+  .legal-title { font-size: 36px; }
+  .site-footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+}
+
+  .cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .cookie-table th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--card-bg);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .cookie-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.7);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .cookie-table tr:last-child td { border-bottom: none; }
+  .cookie-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .cookie-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .badge-essential { background: rgba(201,168,76,0.15); color: var(--gold); }
+  .badge-analytics { background: rgba(90,138,60,0.15); color: #7dc456; }
+  .badge-functional { background: rgba(232,103,26,0.15); color: var(--orange); }

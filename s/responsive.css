@@ -1,0 +1,144 @@
+/* ── RESPONSIVE OVERRIDES ── */
+
+/* 1. Ultra Wide Screens - Cap content width for readability */
+@media (min-width: 1800px) {
+  .hero-content {
+    padding-left: calc((100vw - 1600px) / 2);
+  }
+  .hero-meta {
+    right: calc((100vw - 1600px) / 2);
+  }
+}
+
+/* 2. Large Tablets & Laptops (max-width: 1100px) */
+@media (max-width: 1100px) {
+  .about {
+    gap: 40px;
+  }
+  .about-heading {
+    font-size: 42px;
+  }
+  .themes-grid, .cast-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns instead of 3 */
+  }
+}
+
+/* 3. Small Tablets & Phones (max-width: 900px) */
+/* (Your existing media query is here, these are additions to it) */
+@media (max-width: 900px) {
+  .hero {
+    align-items: center; /* Center content on mobile for better focus */
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-synopsis {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .hero-meta {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .about-stats {
+    justify-content: space-around;
+  }
+
+  .scene-img {
+    height: 400px;
+  }
+}
+
+/* 4. Small Mobile Devices (max-width: 600px) */
+@media (max-width: 600px) {
+  nav {
+    padding: 15px 20px;
+  }
+  
+  .nav-logo {
+    font-size: 18px;
+  }
+
+  .hero-logo {
+    width: 280px;
+  }
+
+  .hero-tagline {
+    font-size: 18px;
+  }
+
+  .hero-synopsis {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%; /* Full width buttons for easier tapping */
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .about-heading {
+    font-size: 32px;
+  }
+
+  .about-stats {
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+  }
+
+  .themes-grid, .cast-grid {
+    grid-template-columns: 1fr; /* Single column */
+  }
+
+  .theme-card, .cast-card {
+    padding: 30px 24px;
+  }
+
+  .cast-name {
+    font-size: 40px;
+  }
+
+  .scene-quote {
+    font-size: 24px;
+  }
+}
+
+/* 5. Touch Device Optimizations */
+@media (hover: none) {
+  .theme-card:hover, .cast-card:hover {
+    transform: none; /* Disable hover lifts on mobile to prevent "sticky" taps */
+  }
+  
+  .nav.scrolled {
+    background: rgba(10,10,10,1); /* Solid background for mobile header */
+  }
+}
+
+/* 6. Fix for short screens (Landscape phones) */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    height: auto;
+    padding: 100px 20px;
+  }
+  .hero-bg {
+    height: 120%; /* Ensure coverage */
+  }
+}
