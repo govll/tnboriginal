@@ -142,3 +142,129 @@
     height: 120%; /* Ensure coverage */
   }
 }
+
+/* ── RESPONSIVE OVERRIDES (Comprehensive) ── */
+
+/* 1. Navigation & Header */
+@media (max-width: 900px) {
+  nav { 
+    padding: 15px 24px; 
+  }
+  .nav-links { 
+    display: none; /* Hide for mobile hamburger or drawer */
+  }
+  .hero-logo { 
+    width: 320px; 
+  }
+}
+
+/* 2. Legal Page & Content Widths */
+@media (max-width: 900px) {
+  .legal-page { 
+    padding: 120px 24px 80px; 
+  }
+  .legal-title { 
+    font-size: 36px; 
+    line-height: 1.2;
+  }
+  .legal-highlight {
+    padding: 16px;
+    font-size: 14px;
+  }
+}
+
+/* 3. Cookie Tables (Critical for Mobile) */
+@media (max-width: 600px) {
+  .cookie-table {
+    display: block;
+    overflow-x: auto; /* Allow horizontal swipe for tables on small phones */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .cookie-table th, 
+  .cookie-table td {
+    min-width: 120px; /* Prevents text from being squashed too thin */
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .badge-essential, 
+  .badge-analytics, 
+  .badge-functional {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+}
+
+/* 4. 404 Glitch Page Responsive */
+@media (max-width: 600px) {
+  .code {
+    font-size: 80px; /* Shrink large "404" text so it doesn't overflow */
+    letter-spacing: 2px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+  
+  .text {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .wrap {
+    padding: 20px;
+  }
+
+  /* Disable heavy animations on low-power mobile devices for better battery/perf */
+  body::after {
+    opacity: 0.02; /* Reduce static overlay intensity */
+  }
+}
+
+/* 5. Grids & Footer */
+@media (max-width: 900px) {
+  .about { 
+    grid-template-columns: 1fr; 
+    padding: 60px 24px; 
+    gap: 40px; 
+  }
+  
+  .themes-grid, 
+  .cast-grid { 
+    grid-template-columns: 1fr; 
+  }
+
+  .site-footer { 
+    padding: 40px 24px; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 30px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* 6. Touch Targets */
+@media (pointer: coarse) {
+  .btn, 
+  .btn-primary, 
+  .btn-secondary {
+    min-height: 48px; /* Easier to tap with fingers */
+  }
+  
+  .nav-links a, 
+  .legal-section a {
+    padding: 5px 0; /* Increase clickable area */
+  }
+}
+
+/* 7. High-Resolution Screen Cap */
+@media (min-width: 1600px) {
+  .legal-page {
+    max-width: 1000px; /* Allow a bit more width on ultra-wide monitors */
+  }
+}
