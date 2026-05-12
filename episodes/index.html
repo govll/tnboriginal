@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episodes | The New Buckingham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/s/styles.css">
+<style>
+
+  /* ── PAGE HEADER ── */
+  .episodes-header {
+    padding: 140px 60px 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .episodes-header-left {}
+
+  .episodes-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .episodes-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+  }
+
+  .series-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 20px;
+  }
+
+  .series-badge span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+
+  .series-badge p {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── EPISODE LIST ── */
+  .episodes-list {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 60px 100px;
+  }
+
+  .episode-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 48px 0;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .episode-card:first-child { padding-top: 48px; }
+
+  .episode-card::before {
+    content: '';
+    position: absolute;
+    left: -60px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .episode-card:nth-child(1)::before { background: #E8671A; }
+  .episode-card:nth-child(2)::before { background: #D4A800; }
+  .episode-card:nth-child(3)::before { background: #C9B840; }
+  .episode-card:nth-child(4)::before { background: #8bc34a; }
+  .episode-card:nth-child(5)::before { background: #6aaa3a; }
+  .episode-card:nth-child(6)::before { background: #5A8A3C; }
+  .episode-card:nth-child(7)::before { background: #4a7a3c; }
+  .episode-card:nth-child(8)::before { background: #8b5e3c; }
+
+  .episode-card:hover::before { opacity: 1; }
+
+  .episode-number-col {
+    padding-top: 6px;
+  }
+
+  .episode-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: rgba(255,255,255,0.08);
+    transition: color 0.3s;
+  }
+
+  .episode-card:hover .episode-number {
+    color: rgba(255,255,255,0.15);
+  }
+
+  .episode-content {}
+
+  .episode-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .episode-label {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .episode-runtime {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .episode-finale-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 3px 10px;
+  }
+
+  .episode-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .episode-synopsis {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+
+  .episode-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(255,255,255,0.35);
+    padding-left: 16px;
+    border-left: 2px solid rgba(255,255,255,0.1);
+  }
+
+  /* ── SEASON NOTE ── */
+  .season-note {
+    max-width: 1300px;
+    margin: 0 auto 80px;
+    padding: 0 60px;
+  }
+
+  .season-note-inner {
+    background: var(--card-bg);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .season-note-icon {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .season-note-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .season-note-text strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── BACK LINK ── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+    margin-bottom: 40px;
+    display: block;
+    padding: 40px 60px 0;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .back-link:hover { color: var(--white); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .episodes-header { padding: 120px 24px 40px; }
+    .episodes-title { font-size: 42px; }
+    .episodes-list { padding: 0 24px 80px; }
+    .episode-card { grid-template-columns: 56px 1fr; }
+    .episode-card::before { left: -24px; }
+    .episode-title { font-size: 24px; }
+    .season-note { padding: 0 24px; }
+    .back-link { padding: 40px 24px 0; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="/" class="nav-logo">The New Buckingham</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#themes">Themes</a></li>
+    <li><a href="/#cast">Cast</a></li>
+  </ul>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<div class="episodes-header">
+  <div class="episodes-header-left">
+    <p class="section-label">Series One</p>
+    <h1 class="episodes-title">Episodes</h1>
+    <p class="episodes-subtitle">8 Episodes &nbsp;&middot;&nbsp; Streaming April 2027</p>
+  </div>
+  <div class="series-badge">
+    <div>
+      <span>S1</span>
+      <p>Series One</p>
+    </div>
+  </div>
+</div>
+
+<!-- SEASON NOTE -->
+<div class="season-note" style="padding-top:48px;">
+  <div class="season-note-inner">
+    <div class="season-note-icon">S1</div>
+    <p class="season-note-text"><strong>Series one of The New Buckingham</strong> follows Sam Jones across the first months of his accidental reign. From the phone call that changes everything, to the address that introduces him to the world, to the relationship that puts him at the centre of a constitutional storm. Eight episodes. One extraordinary, ordinary story.</p>
+  </div>
+</div>
+
+<!-- EPISODES LIST -->
+<div class="episodes-list">
+
+  <!-- EP 1 -->
+  <div class="episode-card">
+    <div class="episode-number-col">
+      <p class="episode-number">01</p>
+    </div>
+    <div class="episode-content">
+      <div class="episode-meta">
+        <span class="episode-label">Episode One</span>
+        <span class="episode-runtime">~40 mins</span>
+      </div>
+      <h2 class="episode-title">Wrong Number, Your Majesty</h2>
+      <p class="episode-synopsis">Sam Jones, 17, is scrolling job rejections in his bedroom in Leeds when an unknown number calls to tell him he is next in line to the British throne. He assumes it's a prank. It isn't. By the end of the day he is in a government car heading south, his mum is watching journalists park outside her house, and the life he had planned is already gone. The episode establishes Sam's voice, his world, and the two people who will become the most important constants in everything that follows: his mum Jade, and his new Private Secretary Amelia Cross.</p>
+      <p class="episode-tagline">"I've got twelve quid in my bank account and a Tesco meal deal for dinner."</p>
+    </div>
+  </div>
+
+  <!-- EP 2 -->
+  <div class="episode-card">
+    <div class="episode-number-col">
+      <p class="episode-number">02</p>
+    </div>
+    <div class="episode-content">
+      <div class="episode-meta">
+        <span class="episode-label">Episode Two</span>
+        <span class="episode-runtime">~40 mins</span>
+      </div>
+      <h2 class="episode-title">Still Standing</h2>
+      <p class="episode-synopsis">The morning after. Sam hasn't slept. In four hours he has to give his first public address to the nation and to thirty-two countries that technically have him as head of state. There is a prepared text. He is not going to use it. The episode builds to the address itself, in which Sam says the cognisant line, comes out as gay on live television before anyone else gets to make it a headline, and manages to be entirely himself in front of the world for the first time. The aftermath is quieter and more important than the address.</p>
+      <p class="episode-tagline">"I'm gay. I'm saying it here, first, in my own words. Because it's true and because it's mine to say."</p>
+    </div>
+  </div>
+
+  <!-- EP 3 -->
+  <div class="episode-card">
+    <div class="episode-number-col">
+      <p class="episode-number">03</p>
+    </div>
+    <div class="episode-content">
+      <div class="episode-meta">
+        <span class="episode-label">Episode Three</span>
+        <span class="episode-runtime">~40 mins</span>
+      </div>
+      <h2 class="episode-title">House of Jones</h2>
+      <p class="episode-synopsis">Sam is told he must establish a new royal house. Name, crest, standard, motto. The institution presents him with eight designs that all look like expensive bank logos. He rejects them all. What follows is the first episode in which Sam stops reacting to the institution and starts shaping it. A late-night conversation with Margaret in the palace kitchen, a slow collaboration with a College of Arms official who turns out to be less rigid than he appears, and a moment with Pembroke that reframes everything. The House of Jones standard is unveiled. Its motto: Still Standing.</p>
+      <p class="episode-tagline">"I'm not a Windsor. I'm a Jones. Working class. Northern. Gay. If this is going to be my house, it should actually mean something."</p>
+    </div>
+  </div>
+
+  <!-- EP 4 -->
+  <div class="episode-card">
+    <div class="episode-number-col">
+      <p class="episode-number">04</p>
+    </div>
+    <div class="episode-content">
+      <div class="episode-meta">
+        <span class="episode-label">Episode Four</span>
+        <span class="episode-runtime">~40 mins</span>
+      </div>
+      <h2 class="episode-title">State of the Heart</h2>
+      <p class="episode-synopsis">A public engagement takes Sam back to Leeds City College. He slips away from his royal handlers for forty seconds to talk to someone he has been too scared to speak to for three years. The tabloids notice. By the next morning Billy Harte's name, college, and home street are in a national newspaper. Sam finds out the way a teenager actually would, someone sends him a link. In the press conference that follows he goes off script. "He is not a headline. He is not palace property." The episode ends with a text conversation and a question Sam didn't expect to be asking.</p>
+      <p class="episode-tagline">"He is not a headline. He is not palace property. And frankly some of you need to have a long hard think about what you're actually doing."</p>
+    </div>
+  </div>
+
+  <!-- EP 5 -->
+  <div class="episode-card">
+    <div class="episode-number-col">
+      <p class="episode-number">05</p>
+    </div>
+    <div class="episode-content">
+      <div class="episode-meta">
+        <span class="episode-label">Episode Five</span>
+        <span class="episode-runtime">~40 mins</span>
+      </div>
+      <h2 class="episode-title">Two Hundred Miles</h2>
+      <p class="episode-synopsis">A government car collects Billy Harte from a terrace in Leeds. He arrives at Buckingham Palace having never been before. Before his visit is an hour old, a photograph taken through his bedroom window by a freelance photographer appears in The Sun. Sam goes past boiling point. He demands the photographer identified, the image removed, and protection officers on Billy's house immediately. Billy finds out. A phone call between them is the emotional centre of the episode. Amelia tells Sam clearly what a relationship with a private individual would actually mean for that individual. Billy listens to all of it. Then he mentions he has been looking up paramedic courses in London.</p>
+      <p class="episode-tagline">"I may have just classified you as a matter of national importance."</p>
+    </div>
+  </div>
+
+  <!-- EP 6 -->
+  <div class="episode-card">
+    <div class="episode-number-col">
+      <p class="episode-number">06</p>
+    </div>
+    <div class="episode-content">
+      <div class="episode-meta">
+        <span class="episode-label">Episode Six</span>
+        <span class="episode-runtime">~40 mins</span>
+      </div>
+      <h2 class="episode-title">Ordinary</h2>
+      <p class="episode-synopsis">A Guardian long-read drops at six in the morning. By seven it has been shared forty thousand times. By eight every broadcaster in the country is running it. Sandra Harte, Billy's mum, watches BBC Breakfast alone in her best chair, gets on a National Express coach, and arrives at Buckingham Palace before lunch. The episode follows the day across GMB, BBC News, Channel 4, and the One Show as the country takes sides. Sam and Billy watch it together. There is a scene in the afternoon, late light through tall windows, that contains almost no dialogue and everything that matters. The episode ends with a first kiss, a public statement in four sentences, and a post-credits scene in a coffee shop that changes what the audience thought they understood about who is pulling strings.</p>
+      <p class="episode-tagline">"There's been a lot written about me this week by people who don't know me. So here's something true."</p>
+    </div>
+  </div>
+
+  <!-- EP 7 -->
+  <div class="episode-card">
+    <div class="episode-number-col">
+      <p class="episode-number">07</p>
+    </div>
+    <div class="episode-content">
+      <div class="episode-meta">
+        <span class="episode-label">Episode Seven</span>
+        <span class="episode-runtime">~40 mins</span>
+      </div>
+      <h2 class="episode-title">Noise</h2>
+      <p class="episode-synopsis">The episode opens on a man in a flat. Ordinary. Invisible. Reading. A parliamentary debate is scheduled on the King's personal conduct. Sam goes to watch from the public gallery in a cap and civilian clothes because he cannot speak but he can witness. Billy is followed twice in Leeds. Sandra receives messages she doesn't tell anyone about except Margaret. Kieran files a security report. The Prime Minister comes to Sam with a suggestion about a lower profile. The conversation ends badly. On Saturday morning Sam stands on the balcony of Buckingham Palace. A shot is fired. The protection team returns fire. Sam goes down. In a living room in Leeds, Billy's mouth opens. The sound that comes out of him is not something that can be described accurately in words.</p>
+      <p class="episode-tagline">"Falcon is down. Medical now. NOW."</p>
+    </div>
+  </div>
+
+  <!-- EP 8 -->
+  <div class="episode-card">
+    <div class="episode-number-col">
+      <p class="episode-number">08</p>
+    </div>
+    <div class="episode-content">
+      <div class="episode-meta">
+        <span class="episode-label">Episode Eight</span>
+        <span class="episode-runtime">~40 mins</span>
+        <span class="episode-finale-badge">Series Finale</span>
+      </div>
+      <h2 class="episode-title">Ordinary People</h2>
+      <p class="episode-synopsis">The country stops. Leeds City College watches the BBC announcement in silence before someone begins to sing. Parliament convenes in emergency closed session. Helen Marsh walks to the dispatch box and tells the chamber two things: Sam is going to be alright, and the relationship is confirmed. The chamber votes on what happens if he isn't alright. Billy fights to get through a hospital barrier. He will get through if it is the last thing he does. Kieran, who has followed every rule for seven episodes, makes a decision. Sam wakes up and the first thing he says is a name. A makeshift studio is assembled in a hospital room in forty minutes. Two young men sit in front of a camera and tell the truth. The series ends in the back of a car going through ordinary London on an ordinary Saturday. Two lads. Still standing.</p>
+      <p class="episode-tagline">"I would never break a promise."</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="rainbow-bar"></div>
+
+<footer class="site-footer">
+  <span class="footer-brand">The New Buckingham</span>
+  <p class="footer-text">The New Buckingham &copy; 2027. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/cookies">Cookie Preferences</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+</script>
+
+</body>
+</html>
